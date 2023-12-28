@@ -34,11 +34,11 @@
                       <img src="{{ articulo.imagen_portada.url }}" alt="">
                     </div>
                     <div class="down-content">
-                      <span>{{ articulo.precio|intcomma }}</span>
+                      <span>{{ articulo.categoria.nombre }}</span>
                       <h4>{{ articulo.titulo}}</h4>
                       <ul class="post-info">
                         <li><a href={% url 'musica:user' articulo.user %}>{{ articulo.user }}</a></li>
-                        <li><a href="#">{{ articulo.creado|date:"M Y" }}</a></li>
+                        <li><a href="#">{{ articulo.fecha_publicacion|date:"M Y" }}</a></li>
                         <li><a href="#">
                           {% if cantidad_comentarios < 1 %}
                             {{ cantidad_comentarios }} Comentario 
@@ -198,7 +198,7 @@
                           <li>
                             <a href="{% url "musica:detalle" articulo.url %}">
                               <h5>{{ articulo.titulo }}</h5>
-                              <span>{{ articulo.creado }}</span>
+                              <span>{{ articulo.fecha_publicacion }}</span>
                             </a>
                           </li>
                         {% endif %}
