@@ -1,0 +1,37 @@
+{% extends "musica/base.html" %}
+{% block titulo %}{{ accion }}{% endblock titulo %}
+
+{% block contenido %}
+
+    <div class="heading-page header-text">
+      <section class="page-heading">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="text-content">
+                <h4>{{ accion }}</h4>
+                <h2>Musica Ligera</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="container mt-5 ">
+        <form method="post" enctype="multipart/form-data" class="col-md-6">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <a class="btn btn-danger my-5" href="{% url "musica:inicio" %}">Cancelar</a>
+        <button type="submit" class="btn btn-primary my-5">
+          {% if accion == 'Agregar Articulo' %}
+          Cargar Articulo
+          {% else %}
+          Actualizar Articulo
+          {% endif %}
+        </button>
+        </form>
+    </div>
+
+{% endblock contenido %}

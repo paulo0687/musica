@@ -1,0 +1,133 @@
+{% extends "musica/base.html" %}
+{% load static %}
+
+{% block titulo %}Contacto{% endblock titulo %}
+
+{% block contenido %}
+    <div class="heading-page header-text">
+      <section class="page-heading">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="text-content">
+                <h4>Contáctanos</h4>
+                <h2>Musica Ligera</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+    <!-- Banner Ends Here -->
+
+
+    <section class="contact-us">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="down-contact">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="sidebar-item contact-form">
+                    <div class="sidebar-heading">
+                      <h2>Envía tu mensaje</h2>
+                    </div>
+                    <div class="content">
+
+                      <form method="POST">
+                        {% csrf_token %}
+
+                        {% if form.errors %}
+                          {% for field in form %}
+                              {% for error in field.errors %}
+                                  <div class="alert alert-danger">
+                                      <strong>{{ error|escape }}</strong>
+                                  </div>
+                              {% endfor %}
+                          {% endfor %}
+                          {% for error in form.non_field_errors %}
+                              <div class="alert alert-danger">
+                                  <strong>{{ error|escape }}</strong>
+                              </div>
+                          {% endfor %}
+                        {% endif %}
+
+                        <div class="row">
+                          <div class="col-md-6 col-sm-12">
+                            <fieldset>
+                              {% comment %} {{ form.nombre }} {% endcomment %}
+                              <input name="nombre" type="text" placeholder="Nombre y Apellido" required="">
+                            </fieldset>
+                          </div>
+                          <div class="col-md-6 col-sm-12">
+                            <fieldset>
+                              {% comment %} {{ form.email }} {% endcomment %}
+                              <input name="email" type="email" placeholder="Tu Email" required="">
+                            </fieldset>
+                          </div>
+                          <div class="col-md-12 col-sm-12">
+                            <fieldset>
+                              {% comment %} {{ form.asunto }} {% endcomment %}
+                              <input name="asunto" type="text" placeholder="Asunto">
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-12">
+                            <fieldset>
+                              {% comment %} {{ form.mensaje }} {% endcomment %}
+                              <textarea name="mensaje" rows="6" placeholder="Tu Mensaje" required=""></textarea>
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-12">
+                            <fieldset>
+                              <button type="submit" id="form-submit" class="main-button">Enviar Mensaje</button>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </form>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="sidebar-item contact-information">
+                    <div class="sidebar-heading">
+                      <h2>Información de Contacto</h2>
+                    </div>
+                    <div class="content">
+                      <ul>
+                        <li>
+                          <h5>+543624856845</h5>
+                          <span>Teléfono</span>
+                        </li>
+                        <li>
+                          <h5>info@musicaligera.com</h5>
+                          <span>Email</span>
+                        </li>
+                        <li>
+                          <h5>Avenida siempre viva 742</h5>
+                          <span>Dirección</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-12">
+            <div id="map">
+              <iframe src="https://maps.app.goo.gl/Cse4nYouy2sZWY928" width="100%" height="450px" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+              {% comment %} <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="450px" frameborder="0" style="border:0" allowfullscreen></iframe> {% endcomment %}
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+{% endblock contenido %}
+
+
