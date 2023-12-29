@@ -55,7 +55,7 @@
                         <div class="down-content">
                             <span>{{ articulo.categoria.nombre}}</span>
                             <a href="{% url "musica:detalle" articulo.url %}">
-                            <h4>{{ articulo.categoria.nombre }}</h4>
+                            <h4>{{ articulo.titulo }}</h4>
                             </a>
                             <ul class="post-info">
                             <li><a href="{% url "musica:user" articulo.user %}">{{ articulo.user }}</a></li>
